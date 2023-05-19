@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Writer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <script src="script.js"></script>
+</head>
+<body>
+        
+    <h1 class="header">Email Writer</h1>
+
+    <div class="container">
+        <form id="myForm" class="mt-4">
+            <div class="form-group">
+                <input type="text" id="inputText" class="form-control" placeholder="What do you want to write?">
+                <button onclick="askGPT3()" type="button" id="submitButton" class="btn btn-warning">Write My Email</button>
+            </div>
+        </form>
+
+        <textarea id="outputText" class="form-control mt-4" rows="10" placeholder="Your e-mail will be shown here..." readonly></textarea>
+    </div>
+</body>
+</html>

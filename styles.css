@@ -1,0 +1,52 @@
+body {
+    background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
+    padding: 50px;
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#outputText {
+    font-family: 'Lato', sans-serif;
+    resize: vertical;
+}
+
+.container {
+    height: fit-content;
+    width: 70%;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.header {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    color: white;
+    position: absolute;
+    top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    font-size: 3rem;
+}
+
+input, button {
+    font-family: 'Open Sans', sans-serif;
+}
+
+input {
+    margin-right: 20px;
+}
+
+.btn {
+    white-space: nowrap;
+    font-weight: 700;
+}
+
+.form-group {
+    display: flex;
+}

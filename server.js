@@ -1,0 +1,33 @@
+const express = require('express');
+// const openai = require('openai');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+require('dotenv').config();
+
+// openai.apiKey = process.env.API_KEY;
+
+const { Configuration, OpenAIApi } = require("openai");
+
+const configuration = new Configuration({
+  apiKey: process.env.API_KEY,
+});
+console.log(configuration.apiKey);
+const openai = new OpenAIApi(configuration);
+
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
+
+app.post('/api/ask', async (req, res) => {
+  const prompt = req.body.prompt;
+  
+  const gptResponse = await openai.createChatCompletion({
+    model: "gpt-3.5-turbo",
+    messages: [{role: "user", content: prompt}]
+  });
+
+  res.send(gptResponse.data.choices[0].message.content);
+});
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Server running on port ${port}`));
