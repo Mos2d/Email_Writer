@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link href="styles.css" rel="stylesheet">
     <script src="script.js"></script>
 </head>
@@ -19,11 +20,27 @@
         <form id="myForm" class="mt-4">
             <div class="form-group">
                 <input type="text" id="inputText" class="form-control" placeholder="What do you want to write?">
-                <button onclick="askGPT3()" type="button" id="submitButton" class="btn btn-warning">Write My Email</button>
+                <button onclick="askGPT3()" type="button" id="submitBtn" class="btn btn-warning">Write My Email</button>
             </div>
         </form>
 
-        <textarea id="outputText" class="form-control mt-4" rows="10" placeholder="Your e-mail will be shown here..." readonly></textarea>
+        <div id="textContainer">
+            <textarea id="outputText" class="form-control mt-4" rows="10" placeholder="Your e-mail will be shown here..."></textarea>
+            <button id="copyBtn" class="btn">
+                <i class="fas fa-copy"></i>
+            </button>
+        </div>
+        <button id="modifyBtn" class="btn btn-success">Modify</button>
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p id="modifyTitle">How do you like to modify this email?</p>
+                <input type="text" id="modifyInput" name="modifyInput" class="form-control"/>
+                <button onclick="modifyEmail()" type="button" id="rewriteBtn" class="btn btn-warning">Rewrite</button>
+            </div>
+        </div>
+
     </div>
 </body>
 </html>

@@ -9,18 +9,6 @@ body {
     justify-content: center;
 }
 
-#outputText {
-    font-family: 'Lato', sans-serif;
-    resize: vertical;
-}
-
-.container {
-    height: fit-content;
-    width: 70%;
-    border-radius: 10px;
-    padding: 20px;
-}
-
 .header {
     font-family: 'Playfair Display', serif;
     text-align: center;
@@ -34,6 +22,45 @@ body {
     font-size: 3rem;
 }
 
+.container {
+    height: fit-content;
+    width: 70%;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.form-group {
+    display: flex;
+}
+
+#textContainer {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+}
+
+#outputText {
+    font-family: 'Lato', sans-serif;
+    resize: vertical;
+    margin-bottom: 20px;
+}
+
+#copyBtn {
+    position: absolute;
+    top: 30px;
+    right: 10px;
+    border: solid 1px rgb(63, 76, 119);
+    color: rgb(63, 76, 119);
+    transition: all 0.2s;
+}
+#copyBtn:hover {
+    border: solid 1px white;
+    color: white;
+    background-color: rgb(63, 76, 119);
+    transition: all 0.2s;
+}
+
+
 input, button {
     font-family: 'Open Sans', sans-serif;
 }
@@ -42,11 +69,55 @@ input {
     margin-right: 20px;
 }
 
+
 .btn {
     white-space: nowrap;
     font-weight: 700;
+    width: fit-content;
 }
 
-.form-group {
-    display: flex;
+/* popup */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+}
+
+#modifyInput {
+    margin-bottom: 20px;
+}
+
+#rewriteBtn {
+    align-self: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    width: fit-content;
+    align-self: flex-end;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
