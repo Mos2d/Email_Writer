@@ -4,11 +4,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     var span = document.getElementsByClassName("close")[0];
     var textarea = document.getElementById("outputText");
     var copyBtn = document.getElementById("copyBtn");
-
+    var loader = document.getElementById('loaderBG');
+    
     // initially hide the button
+    loader.style.display = "none";
     btn.style.display = "none";
     copyBtn.style.display = "none";
-
+    
     // set up an input event listener for the textarea
     textarea.addEventListener("input", function() {
         if (textarea.value.trim() !== '') {
@@ -19,7 +21,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             // if the textarea is empty, hide the button
             btn.style.display = "none";
             copyBtn.style.display = "none";
-
+            
         }
     });
 
@@ -50,13 +52,17 @@ function askGPT3() {
     if (outputTextArea.value == '') {
         send();
     } else {
-        console.log("Are you sure you want to overwrite?");
+        console.log(outputTextArea.value);
     }
 }
 
 async function send() {
-    const question = document.getElementById('inputText').value;
-  
+    var btn = document.getElementById("modifyBtn");
+    var copyBtn = document.getElementById("copyBtn");
+    var question = document.getElementById('inputText').value;
+    var loader = document.getElementById('loaderBG');
+
+    loader.style.display = "inline-block";
     const response = await fetch('http://localhost:3000/api/ask', {
       method: 'POST',
       headers: {
@@ -66,17 +72,25 @@ async function send() {
         prompt: question
       })
     });
-  
+
     const answer = await response.text();
-    
-    document.getElementById('outputText').value = answer;
+    loader.style.display = "none";
+    document.getElementById('outputText').innerText = answer;
+    btn.style.display = "block";
+    copyBtn.style.display = "block";
 }
   
 async function modifyEmail() {
-    const email = document.getElementById('outputText').value;
-    const modify = document.getElementById('inputText').value;
-    const question = '"' + email + '"' + modify; 
+    var btn = document.getElementById("modifyBtn");
+    var copyBtn = document.getElementById("copyBtn");
+    var email = document.getElementById('outputText').value;
+    var modify = document.getElementById('inputText').value;
+    var question = '"' + email + '"' + modify; 
+    var loader = document.getElementById('loaderBG');
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
   
+    loader.style.display = "inline-block";
     const response = await fetch('http://localhost:3000/api/ask', {
       method: 'POST',
       headers: {
@@ -87,7 +101,10 @@ async function modifyEmail() {
       })
     });
   
-    const answer = await response.text();
+    var answer = await response.text();
+    loader.style.display = "none";
     
     document.getElementById('outputText').value = answer;
+    btn.style.display = "block";
+    copyBtn.style.display = "block";
 }
