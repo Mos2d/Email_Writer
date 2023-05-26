@@ -23,6 +23,13 @@
                 <button onclick="askGPT3()" type="button" id="submitBtn" class="btn btn-warning">Write My Email</button>
             </div>
         </form>
+        <div id="confirm-popup" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p id="modifyTitle">Are you sure you want to overwrite what's in there?</p>
+                <button onclick="overwrite()" type="button" id="overwriteBtn" class="btn btn-warning">Rewrite</button>
+            </div>
+        </div>
 
         <div id="textContainer">
             <textarea id="outputText" class="form-control mt-4" rows="10" placeholder="Your e-mail will be shown here..."></textarea>
@@ -32,7 +39,7 @@
         </div>
         <button id="modifyBtn" class="btn btn-success">Modify</button>
 
-        <div id="myModal" class="modal">
+        <div id="modify-popup" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <p id="modifyTitle">How do you like to modify this email?</p>

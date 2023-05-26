@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    var modal = document.getElementById("myModal");
+    var modify_popup = document.getElementById("modify-popup");
+    var confirm_popup = document.getElementById("confirm-popup");
     var btn = document.getElementById("modifyBtn");
     var span = document.getElementsByClassName("close")[0];
     var textarea = document.getElementById("outputText");
@@ -26,16 +27,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 
     btn.addEventListener("click", function() {
-        modal.style.display = "block";
+        modify_popup.style.display = "block";
     });
 
     span.addEventListener("click", function() {
-        modal.style.display = "none";
+        modify_popup.style.display = "none";
     });
 
     window.addEventListener("click", function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+        if (event.target == modify_popup) {
+            modify_popup.style.display = "none";
         }
     });
 
@@ -49,11 +50,22 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 function askGPT3() {
     const outputTextArea = document.getElementById('outputText');
+    const confirm_popup = document.getElementById('confirm-popup');
+
     if (outputTextArea.value == '') {
         send();
     } else {
-        console.log(outputTextArea.value);
+        confirm_popup.style.display = "block";
     }
+}
+
+function overwrite() {
+    const confirm_popup = document.getElementById("confirm-popup");
+    confirm_popup.style.display = "none";
+
+    const outputTextArea = document.getElementById('outputText');
+    outputTextArea.value = '';
+    askGPT3();
 }
 
 async function send() {
@@ -87,8 +99,8 @@ async function modifyEmail() {
     var modify = document.getElementById('inputText').value;
     var question = '"' + email + '"' + modify; 
     var loader = document.getElementById('loaderBG');
-    var modal = document.getElementById("myModal");
-    modal.style.display = "none";
+    var modify_popup = document.getElementById("modify-popup");
+    modify_popup.style.display = "none";
   
     loader.style.display = "inline-block";
     const response = await fetch('http://localhost:3000/api/ask', {
